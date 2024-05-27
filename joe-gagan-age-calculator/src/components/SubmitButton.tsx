@@ -1,13 +1,13 @@
 import Arrow from "../assets/images/icon-arrow.svg";
 
-function SubmitButton({ submit }) {
+function SubmitButton({ onSubmit }: { onSubmit: () => void }) {
   return (
-    <div className="flex justify-end">
+    <div className="flex max-md:justify-center md:justify-end mb-[-1.7rem] md:mb-[-2.5rem]">
       <button
         title=""
         type="button"
-        className="w-14 h-14 bg-purple rounded-full p-4"
-        onClick={submit}
+        className="w-20 h-20 items-center rounded-full bg-purple p-4 max-md:h-16 max-md:w-16"
+        onClick={onSubmit}
       >
         <img src={Arrow} alt="" />
       </button>
