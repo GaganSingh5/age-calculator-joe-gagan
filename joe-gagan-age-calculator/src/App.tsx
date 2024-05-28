@@ -5,7 +5,6 @@ import {
   differenceInYears,
   differenceInMonths,
   differenceInDays,
-  set,
 } from "date-fns";
 
 import DateInputArea from "./DateInputArea";
