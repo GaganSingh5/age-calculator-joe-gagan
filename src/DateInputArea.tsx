@@ -4,36 +4,21 @@ import SubmitButton from "./components/SubmitButton";
 
 export default function DateInputArea({
   theDate,
-  setTheDate,
   errorMessage,
+  handleInput,
   onSubmit,
 }: {
   theDate: CalculatorDate;
-  setTheDate: React.Dispatch<React.SetStateAction<CalculatorDate>>;
   errorMessage: {
     day: string | undefined;
     month: string | undefined;
     year: string | undefined;
   };
+  handleInput: (e: React.ChangeEvent<HTMLInputElement>, key: string) => void;
   onSubmit: () => void;
 }) {
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>, key: string) => {
-    const value = parseInt(e.target.value);
-    if (isNaN(value)) {
-      setTheDate({
-        ...theDate,
-        [key]: 0,
-      });
-    } else {
-      setTheDate({
-        ...theDate,
-        [key]: value,
-      });
-    }
-  };
-
   return (
-    <div className="relative flex gap-4 pb-12 border-b border-lightgray mb-12 md:mb-0">
+    <div className="relative flex gap-4 pb-16 border-b border-lightgray mb-12 md:mb-0">
       <DateFieldInput
         label="Day"
         value={theDate.days ? theDate.days.toString() : undefined}

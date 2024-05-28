@@ -17,14 +17,28 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## TO DO
+
+### Logic
+
+- ✅ Clear error messages on submit
+- ✅ Display "0" instead of double hyphens when showing an age
+- Fine-tune the day field validation to account for months with 28, 29, 30 and 31 days
+
+### Styling
+
+- ✅ Focus rings look good (like the mockup)
+- ✅ Black on hover for submit button
+- ✅ Tune responsive layout for small phone screens

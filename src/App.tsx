@@ -1,5 +1,11 @@
 import { useState } from "react";
 import {
+  validateDay,
+  validateMonth,
+  validateYear,
+  getMaxDaysInMonth,
+} from "./validationLogic";
+import {
   subYears,
   subMonths,
   differenceInYears,
@@ -16,12 +22,18 @@ export interface CalculatorDate {
   days: number | undefined;
 }
 
+export interface ErrorMessage {
+  day: string | undefined;
+  month: string | undefined;
+  year: string | undefined;
+}
+
 function App() {
   const [errorMessage, setErrorMessage] = useState({
     day: undefined as string | undefined,
     month: undefined as string | undefined,
     year: undefined as string | undefined,
-  });
+  } as ErrorMessage);
 
   const [theDate, setTheDate] = useState({
     days: 0,
@@ -30,62 +42,92 @@ function App() {
   } as CalculatorDate);
 
   const [age, setAge] = useState({
-    years: 0,
-    months: 0,
-    days: 0,
+    years: undefined,
+    months: undefined,
+    days: undefined,
   } as CalculatorDate);
-  const onSubmit = () => {
-    if (!theDate.days) {
-      setErrorMessage({
-        ...errorMessage,
-        day: "Day is required",
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>, key: string) => {
+    const value = parseInt(e.target.value);
+
+    validateDateInput(e, setErrorMessage);
+
+    if (isNaN(value)) {
+      setTheDate({
+        ...theDate,
+        [key]: 0,
+      });
+    } else {
+      setTheDate({
+        ...theDate,
+        [key]: value,
       });
     }
+  };
 
-    if (!theDate.months) {
+  function validateDateInput(
+    e: React.ChangeEvent<HTMLInputElement>,
+    setErrorMessage: React.Dispatch<React.SetStateAction<ErrorMessage>>
+  ) {
+    const value = parseInt(e.target.value);
+    const field: string = e.target.id;
+    const lcField = field.toLowerCase();
+
+    const day = field === "Day" ? value : theDate.days;
+    const month = field === "Month" ? value : theDate.months;
+    const year = field === "Year" ? value : theDate.years || 2000;
+
+    console.log("theDate.days", theDate.days);
+    console.log("day", day);
+    console.log("month", month);
+    console.log("year", year);
+
+    const validator = {
+      day: validateDay,
+      month: validateMonth,
+      year: validateYear,
+    };
+
+    setErrorMessage((msg) => ({
+      ...msg,
+      [lcField]: undefined,
+    }));
+
+    if (month && day && day > getMaxDaysInMonth(month, year)) {
       setErrorMessage((msg) => ({
         ...msg,
-        month: "Month is required",
+        day: `Must be a valid day`,
+      }));
+    } else {
+      setErrorMessage((msg) => ({
+        ...msg,
+        day: undefined,
       }));
     }
 
-    if (!theDate.years) {
+    if (e.target.value === "") {
       setErrorMessage((msg) => ({
         ...msg,
-        year: "Year is required",
+        [lcField]: `${field} is required`,
       }));
-    }
-
-    if (theDate.days && (theDate.days > 31 || theDate.days < 1)) {
+    } else if (!validator[lcField](value)) {
       setErrorMessage((msg) => ({
         ...msg,
-        day: "Must be a valid day",
+        [lcField]: `Must be a valid ${lcField}`,
       }));
     }
+  }
 
-    if (theDate.months && (theDate.months > 12 || theDate.months < 1)) {
-      setErrorMessage((msg) => ({
-        ...msg,
-        month: "Must be a valid month",
-      }));
-    }
-
-    if (
-      theDate.years &&
-      (theDate.years < 1 || theDate.years > new Date().getFullYear())
-    ) {
-      setErrorMessage((msg) => ({
-        ...msg,
-        year: "Must be a valid year",
-      }));
-    }
-
-    console.log(errorMessage);
-
+  const onSubmit = () => {
     if (theDate.days && theDate.months && theDate.years) {
       setAge(
         calculateAge(new Date(theDate.years, theDate.months - 1, theDate.days))
       );
+      setErrorMessage({
+        year: undefined,
+        day: undefined,
+        month: undefined,
+      });
     } else {
       setAge({
         years: undefined,
@@ -123,12 +165,12 @@ function App() {
 
   return (
     <>
-      <main className="bg-white p-14 rounded-[1.5rem] rounded-br-[12.5rem] mx-8 lg:w-[840px]">
+      <main className="bg-white p-6 pb-12 md:p-14 rounded-[1.5rem] rounded-br-[100px] md:rounded-br-[12.5rem] mx-8 lg:w-[840px]">
         <DateInputArea
           theDate={theDate}
-          setTheDate={setTheDate}
           errorMessage={errorMessage}
           onSubmit={onSubmit}
+          handleInput={handleInput}
         />
         <YearsOldArea years={age.years} months={age.months} days={age.days} />
       </main>

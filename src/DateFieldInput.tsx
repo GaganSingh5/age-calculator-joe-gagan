@@ -19,7 +19,7 @@ export default function DateFieldInput({
         {label}
       </label>
       <input
-        className="text-black font-bold rounded border border-lightgray px-5 py-3 w-full max-w-40 text-5 md:text-[2rem]"
+        className="text-black font-bold rounded border border-lightgray px-4 md:px-5 py-3 w-full max-w-40 text-5 md:text-[2rem] focus-within:outline-purple focus-within:outline"
         id={label}
         value={value}
         onChange={onChange}
@@ -28,7 +28,9 @@ export default function DateFieldInput({
           borderColor: error ? "hsl(0, 100%, 67%)" : "hsl(0, 0%, 86%)",
         }}
       />
-      {errorMessage && <p className="text-lightred">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="text-lightred text-sm md:text-base">{errorMessage}</p>
+      )}
     </div>
   );
 }
