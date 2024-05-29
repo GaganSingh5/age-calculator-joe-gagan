@@ -173,7 +173,7 @@ function App() {
 
   return (
     <>
-      <main className="mx-8 max-md:w-[32rem] max-w-[85vw] rounded-[1.5rem] rounded-br-[100px] bg-white p-6 pb-12 md:rounded-br-[12.5rem] md:p-14 lg:w-[840px]">
+      <main className="relative mx-8 max-w-[85vw] rounded-[1.5rem] rounded-br-[100px] bg-white p-6 pb-8 max-md:w-[32rem] md:rounded-br-[12.5rem] md:p-14 md:pb-4 lg:w-[840px]">
         <DateInputArea
           theDate={theDate}
           errorMessage={errorMessage}
@@ -181,6 +181,11 @@ function App() {
           handleInput={handleInput}
         />
         <YearsOldArea years={age.years} months={age.months} days={age.days} />
+        <p className="text-xs text-center [&_a]:text-purple text-balance pt-12 md:mt-4 px-16 md:px-32">
+          Design by <a href="https://frontendmentor.io/">FrontEndMentor.io</a>.
+          Code by <a href="https://jokma.com/">Joe Kotvas</a> and{" "}
+          <a href="https://github.com/GaganSingh5">Gagan Singh</a>.
+        </p>
       </main>
     </>
   );
