@@ -1,5 +1,5 @@
 import DateFieldInput from "./DateFieldInput";
-import { CalculatorDate } from "./hooks/useAgeCalculator";
+import { CalculatorDate, ErrorMessage } from "./hooks/useAgeCalculator";
 import SubmitButton from "./components/SubmitButton";
 
 export default function DateInputArea({
@@ -9,11 +9,7 @@ export default function DateInputArea({
   onSubmit,
 }: {
   theDate: CalculatorDate;
-  errorMessage: {
-    day: string | undefined;
-    month: string | undefined;
-    year: string | undefined;
-  };
+  errorMessage: ErrorMessage;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>, key: string) => void;
   onSubmit: () => void;
 }) {
