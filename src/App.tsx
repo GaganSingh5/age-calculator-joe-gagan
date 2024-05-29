@@ -110,7 +110,7 @@ function App() {
         ...msg,
         [lcField]: `${field} is required`,
       }));
-    } else if (!validator[lcField](value)) {
+    } else if (!validator[lcField as keyof typeof validator](value)) {
       setErrorMessage((msg) => ({
         ...msg,
         [lcField]: `Must be a valid ${lcField}`,

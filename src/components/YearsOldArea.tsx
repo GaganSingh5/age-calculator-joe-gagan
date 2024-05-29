@@ -1,4 +1,3 @@
-import React from "react";
 import { CalculatorDate } from "../App";
 
 function YearsOldArea({ years, months, days }: CalculatorDate) {
