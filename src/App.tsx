@@ -181,9 +181,12 @@ function App() {
           handleInput={handleInput}
         />
         <YearsOldArea years={age.years} months={age.months} days={age.days} />
-        <p className="text-xs text-center [&_a]:text-purple text-balance pt-12 md:mt-4 px-16 md:px-32">
-          Design by <a href="https://frontendmentor.io/">FrontEndMentor.io</a>.
-          Code by <a href="https://jokma.com/">Joe Kotvas</a> and{" "}
+        <p className="text-xs text-center text-[#aaa] [&_a]:text-[#B69AFF] text-balance pt-12 md:mt-4 px-16 md:px-32">
+          A{" "}
+          <a href="https://github.com/joekotvas/age-calculator-joe-gagan">
+            collab
+          </a>{" "}
+          from <a href="https://jokma.com/">Joe Kotvas</a> and{" "}
           <a href="https://github.com/GaganSingh5">Gagan Singh</a>.
         </p>
       </main>
