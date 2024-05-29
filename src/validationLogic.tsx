@@ -7,7 +7,7 @@ function validateMonth(month: number | undefined) {
 }
 
 function validateYear(year: number | undefined) {
-  return year && year > 0 && year < new Date().getFullYear();
+  return year && year > 0 && year <= new Date().getFullYear();
 }
 
 function getMaxDaysInMonth(month: number, year: number) {

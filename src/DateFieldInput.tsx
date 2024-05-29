@@ -14,12 +14,21 @@ export default function DateFieldInput({
   const error = errorMessage !== undefined;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full max-w-40">
       <label htmlFor={label} className="uppercase max-md:text-sm">
         {label}
       </label>
       <input
-        className="text-black font-bold rounded border border-lightgray px-4 md:px-5 py-3 w-full max-w-40 text-5 md:text-[2rem] focus-within:outline-purple focus-within:outline"
+        type="number"
+        min="1"
+        max={
+          label === "Day"
+            ? "31"
+            : label === "Month"
+            ? "12"
+            : `${new Date().getFullYear()}`
+        }
+        className="remove-arrow text-black font-bold rounded border border-lightgray px-4 md:px-5 py-3 w-full max-w-40 md:w-40 text-5 md:text-[2rem] focus-within:outline-purple focus-within:outline"
         id={label}
         value={value}
         onChange={onChange}

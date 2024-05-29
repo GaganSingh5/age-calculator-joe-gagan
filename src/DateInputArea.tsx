@@ -18,7 +18,7 @@ export default function DateInputArea({
   onSubmit: () => void;
 }) {
   return (
-    <div className="relative flex gap-4 pb-16 border-b border-lightgray mb-12 md:mb-0">
+    <form className="relative flex gap-4 pb-16 border-b border-lightgray mb-12 md:mb-0">
       <DateFieldInput
         label="Day"
         value={theDate.days ? theDate.days.toString() : undefined}
@@ -43,6 +43,6 @@ export default function DateInputArea({
       <div className="absolute w-full bottom-0 ">
         <SubmitButton onSubmit={onSubmit} />
       </div>
-    </div>
+    </form>
   );
 }

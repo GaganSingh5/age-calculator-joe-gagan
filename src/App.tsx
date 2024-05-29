@@ -118,7 +118,8 @@ function App() {
     }
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (
       theDate.days &&
       theDate.months &&
@@ -172,11 +173,11 @@ function App() {
 
   return (
     <>
-      <main className="bg-white p-6 pb-12 md:p-14 rounded-[1.5rem] rounded-br-[100px] md:rounded-br-[12.5rem] mx-8 lg:w-[840px]">
+      <main className="mx-8 max-md:w-[32rem] max-w-[85vw] rounded-[1.5rem] rounded-br-[100px] bg-white p-6 pb-12 md:rounded-br-[12.5rem] md:p-14 lg:w-[840px]">
         <DateInputArea
           theDate={theDate}
           errorMessage={errorMessage}
-          onSubmit={onSubmit}
+          onSubmit={onSubmit as () => void}
           handleInput={handleInput}
         />
         <YearsOldArea years={age.years} months={age.months} days={age.days} />

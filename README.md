@@ -35,10 +35,17 @@ export default {
 
 - ✅ Clear error messages on submit
 - ✅ Display "0" instead of double hyphens when showing an age
-- Fine-tune the day field validation to account for months with 28, 29, 30 and 31 days
+- ✅ Fine-tune the day field validation to account for months with 28, 29, 30 and 31 days
+- ✅ Extend range of year to include current year
 
 ### Styling
 
 - ✅ Focus rings look good (like the mockup)
 - ✅ Black on hover for submit button
 - ✅ Tune responsive layout for small phone screens
+
+### Accessibility
+
+- ✅ Change inputs fields to number inputs and add min and max values
+- ✅ Submit form on enter key press
+- Explore adding aria labels
