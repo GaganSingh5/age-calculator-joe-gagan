@@ -1,20 +1,12 @@
-import { CalculatorDate } from "../App";
+import { AgeInterface } from "../hooks/useAgeCalculator";
+import AgeOutputItem from "./AgeOutputItem";
 
-function YearsOldArea({ years, months, days }: CalculatorDate) {
+function YearsOldArea({ age }: { age: AgeInterface }) {
   return (
     <div className="date__container flex flex-col pt-4 md:pt-8 text-purple max-md:text-5xl md:text-[6.5rem] font-bold italic leading-[1]">
-      <div className="years__container">
-        {years != undefined ? years : "--"}{" "}
-        <span className="text-offblack">years</span>
-      </div>
-      <div className="months__container">
-        {months != undefined ? months : "--"}{" "}
-        <span className="text-offblack">months</span>
-      </div>
-      <div className="date__container">
-        {days != undefined ? days : "--"}{" "}
-        <span className="text-offblack">days</span>
-      </div>
+      <AgeOutputItem age={age} unit="years" />
+      <AgeOutputItem age={age} unit="months" />
+      <AgeOutputItem age={age} unit="days" />
     </div>
   );
 }

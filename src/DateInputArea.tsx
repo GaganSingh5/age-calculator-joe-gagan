@@ -1,5 +1,5 @@
 import DateFieldInput from "./DateFieldInput";
-import { CalculatorDate } from "./App";
+import { CalculatorDate } from "./hooks/useAgeCalculator";
 import SubmitButton from "./components/SubmitButton";
 
 export default function DateInputArea({
