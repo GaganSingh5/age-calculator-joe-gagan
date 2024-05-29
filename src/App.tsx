@@ -119,15 +119,22 @@ function App() {
   }
 
   const onSubmit = () => {
-    if (theDate.days && theDate.months && theDate.years) {
-      setAge(
-        calculateAge(new Date(theDate.years, theDate.months - 1, theDate.days))
+    if (
+      theDate.days &&
+      theDate.months &&
+      theDate.years &&
+      !errorMessage.day &&
+      !errorMessage.month &&
+      !errorMessage.year
+    ) {
+      const workingDate = new Date(
+        theDate.years,
+        theDate.months - 1,
+        theDate.days
       );
-      setErrorMessage({
-        year: undefined,
-        day: undefined,
-        month: undefined,
-      });
+      // Resolve the issue with inconsistent interpretation of two-digit years
+      workingDate.setFullYear(theDate.years);
+      setAge(calculateAge(workingDate));
     } else {
       setAge({
         years: undefined,

@@ -12,7 +12,8 @@ function validateYear(year: number | undefined) {
 
 function getMaxDaysInMonth(month: number, year: number) {
   const date = new Date(year, month, 0);
-  console.log(date);
+  // Resolve the issue with inconsistent interpretation of two-digit years
+  date.setFullYear(year);
   return date.getDate();
 }
 
