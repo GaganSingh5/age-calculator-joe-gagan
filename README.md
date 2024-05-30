@@ -57,12 +57,11 @@ Joe is a front-end developer and UX specialist who has been building client site
 
 ### Gagandeep Singh
 
-Gagan is a full-stack web developer currently pursuing his master's in computer science. He has experience working with a variety of technologies, including JavaScript, Python, and Java. Gagan is passionate about building high-quality software that solves real-world problems. He is always looking for new challenges and opportunities to learn and grow as a developer.
+Gagan is a full-stack web developer currently pursuing his masters in applied computing. He has experience working with a variety of technologies, including JavaScript, Python, and Java. Gagan is passionate about building high-quality software that solves real-world problems. He is always looking for new challenges and opportunities to learn and grow as a developer.
 
-- Portfolio - [Gagandeep Singh](https://www.gagansingh.dev/)
-- Dev.to - [@gsingh](https://dev.to/gsingh)
-- GitHub - [@joekotvas](https://github.com/GaganSingh5)
-- LinkedIn - [Gagandeep Singh](https://www.linkedin.com/in/gagandeep-singh1994/)
+- Portfolio - [Gagandeep Singh](https://gagansingh5.github.io/portfolio/)
+- GitHub - [@gagansingh5](https://github.com/GaganSingh5)
+- LinkedIn - [Gagandeep Singh](https://www.linkedin.com/in/gagansingh5/)
 
 ## Acknowledgments
 
